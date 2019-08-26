@@ -4,6 +4,8 @@ import os
 import re
 import sys
 
+reserved_prefixs = ["-[","+["]
+
 def verified_app_path(path):
     if path.endswith('.app'):
         appname = path.split('/')[-1].split('.')[0]
@@ -137,7 +139,9 @@ def ignore_selectors(sel):
 def filter_selectors(sels):
     filter_sels = set()
     for sel in sels:
-        filter_sels.add(sel)
+        for prefix in reserved_prefixs:
+            if sel.startswith(prefix):    
+                filter_sels.add(sel)
     return filter_sels
 
 
