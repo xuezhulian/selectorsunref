@@ -86,7 +86,7 @@ def imp_selectors(path):
     re_sel_imp = re.compile('\s*imp\s*0x\w+ ([+|-]\[.+\s(.+)\])')
     re_properties_start = re.compile('\s*baseProperties 0x\w{9}')
     re_properties_end = re.compile('\w{16} 0x\w{9} _OBJC_CLASS_\$_(.+)')
-    re_property = re.compile('\s*name 0x\w+ (.+)')
+    re_property = re.compile('\s*name\s*0x\w+ (.+)')
     imp_sels = {}
     is_properties_area = False
     for line in os.popen('/usr/bin/otool -oV %s' % path).xreadlines():
